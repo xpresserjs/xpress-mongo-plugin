@@ -1,0 +1,4 @@
+{
+  "namespace": "@xpresser/xpress-mongo",
+  "use_index": true
+}

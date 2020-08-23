@@ -1,0 +1,22 @@
+const {DBCollection, is} = require("@xpresser/xpress-mongo/util");
+
+// Model Schema
+const {{name}}Schema = {
+    updatedAt: is.Date(),
+    createdAt: is.Date()
+};
+
+/**
+* {{name}} Model Class
+*/
+class {{name}} extends DBCollection('{{table}}') {
+
+    constructor(){
+        super();
+        // Register Schema
+        this.useSchema({{name}}Schema);
+    }
+
+}
+
+module.exports = {{name}}
