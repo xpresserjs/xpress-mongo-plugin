@@ -1,9 +1,9 @@
 {
   "name": "@xpresser/xpress-mongo",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Xpress Mongo plugin for xpresser.",
   "main": "index.js",
-  "repository": "--",
+  "repository": "https://github.com/xpresserjs/xpress-mongo-plugin.git",
   "author": "xpresserjs",
   "license": "MIT",
   "private": false,
