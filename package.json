@@ -11,6 +11,6 @@
     "xpresser": "^0.2.47"
   },
   "dependencies": {
-    "xpress-mongo": "^0.0.34"
+    "xpress-mongo": "^0.0.37"
   }
 }

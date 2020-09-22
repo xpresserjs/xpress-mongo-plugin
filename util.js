@@ -1,4 +1,4 @@
-const {Client, XMongoModel, is} = require('xpress-mongo')
+const {Client, XMongoModel, is, parseServerUrl} = require('xpress-mongo')
 const config = $.$config.get('mongodb');
 
 if(!config)
@@ -17,3 +17,4 @@ exports.DBCollection = (collection) => {
 exports.XMongoConnection = XMongoConnection;
 exports.XMongoModel = XMongoModel;
 exports.is = is;
+exports.parseServerUrl = parseServerUrl;
