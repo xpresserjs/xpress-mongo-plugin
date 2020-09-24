@@ -1,6 +1,6 @@
 {
   "name": "@xpresser/xpress-mongo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Xpress Mongo plugin for xpresser.",
   "main": "index.js",
   "repository": "https://github.com/xpresserjs/xpress-mongo-plugin.git",
