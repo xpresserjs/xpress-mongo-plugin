@@ -1,15 +1,16 @@
-const {DBCollection, is} = require("@xpresser/xpress-mongo/util");
+const {is} = require("xpress-mongo");
+const {DBCollection} = require("@xpresser/xpress-mongo/util");
 
 // Model Schema
 const {{name}}Schema = {
     updatedAt: is.Date(),
-    createdAt: is.Date()
+    createdAt: is.Date().required()
 };
 
 /**
 * {{name}} Model Class
 */
-class {{name}} extends DBCollection('{{table}}') {
+class {{name}} extends DBCollection("{{table}}") {
 
     constructor(){
         super();
