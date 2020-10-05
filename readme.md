@@ -2,9 +2,22 @@
 Xpress mongo is a light nodejs library for mongodb.
  
  
+ ### Installation
+ Install **xpress-mongo**
+ ```shell script
+npm i xpress-mongo
+# OR
+yarn add xpress-mongo
+```
+Install **@xpresser/xpress-mongo** plugin
+ ```shell script
+npm i @xpresser/xpress-mongo
+# OR
+yarn add @xpresser/xpress-mongo
+```
+
  ### Setup
- 1. Install `@xpresser/xpress-mongo` in your project
- 2. Add `npm://@xpresser/xpress-mongo` to plugins array in your plugins.json file.
+ Add `npm://@xpresser/xpress-mongo` to plugins array in your plugins.json file.
  
  Note: if you don't have `plugins.json` file in your project create one in your **backend** folder.
  **backend/plugins.json**
