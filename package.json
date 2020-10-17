@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "xpress-mongo": "^0.0.45",
-    "xpresser": "^0.2.78"
+    "xpress-mongo": "^0.0.46",
+    "xpresser": "^0.2.81"
   }
 }

@@ -1,5 +1,10 @@
 const {Client, XMongoModel, is, parseServerUrl} = require('xpress-mongo')
-const config = $.$config.get('mongodb');
+// Get mongodb config
+let config = $.$config.get('mongodb');
+
+if (typeof config === "function") {
+    config = $.$config.call('mongodb');
+}
 
 if (!config)
     throw Error('mongodb config not found!');
