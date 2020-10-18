@@ -1,23 +1,25 @@
-const {is} = require("xpress-mongo");
+const {is, RefreshDateOnUpdate} = require("xpress-mongo");
 const {DBCollection} = require("@xpresser/xpress-mongo/util");
-
-// Model Schema
-const {{name}}Schema = {
-    updatedAt: is.Date(),
-    createdAt: is.Date().required()
-};
 
 /**
 * {{name}} Model Class
 */
 class {{name}} extends DBCollection("{{table}}") {
 
-    constructor(){
-        super();
-        // Register Schema
-        this.useSchema({{name}}Schema);
-    }
+    // Set Model Schema
+    static schema = {
+        updatedAt: is.Date(),
+        createdAt: is.Date().required()
+    };
 
 }
 
+/**
+* Adds event to set `updatedAt` Timestamp to current date on update.
+* Remove if not in use.
+*/
+RefreshDateOnUpdate({{name}}, 'updatedAt');
+
+
+// Export Model
 module.exports = {{name}}
