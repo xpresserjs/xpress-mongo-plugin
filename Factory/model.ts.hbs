@@ -1,0 +1,26 @@
+import {is, XMongoModel} from 'xpress-mongo';
+import {DBCollection} from '@xpresser/xpress-mongo';
+
+// Model Interface (optional)
+export interface {{name}}DataType {
+    updatedAt?: Date,
+    createdAt: Date,
+}
+
+/**
+ * @class {{name}}
+ * @extends XMongoModel
+ */
+class {{name}} extends (<typeof XMongoModel>DBCollection('{{table}}')) {
+
+    // Set Model Schema
+    static schema = {
+        updatedAt: is.Date(),
+        createdAt: is.Date().required()
+    };
+
+    // Set Model data type (optional)
+    public data!: {{name}}DataType;
+}
+
+export default {{name}};
