@@ -1,4 +1,4 @@
 {
   "namespace": "@xpresser/xpress-mongo",
-  "use_index": true
+  "use_index": "dist/index.js"
 }
