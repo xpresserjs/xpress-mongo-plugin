@@ -1,11 +1,13 @@
-const {XMongoConnection} = require('../util');
+import {XMongoConnection} from "../util";
+import {DollarSign} from "xpresser/types";
+declare const $: DollarSign;
 
 /**
  * Connect to database on boot
  * @param next
  * @return {Promise<*>}
  */
-module.exports = async (next) => {
+export = async (next: () => any): Promise<any> => {
     // Get mongodb config
     let config = $.$config.get('mongodb', {});
 
