@@ -2,11 +2,11 @@ import {DollarSign} from "xpresser/types";
 
 declare const $: DollarSign;
 
-export function run(config: any): void {
-    // Connect to db on boot
-    $.on.boot([
-        next => require('./lib/ConnectToMongodb')(next),
-    ]);
+export async function run(config: any): Promise<void> {
+    // Require Connector
+    const ConnectToMongodb = require('./lib/ConnectToMongodb');
+    // Connect
+    await ConnectToMongodb();
 
     /**
      * Set artisan factory settings

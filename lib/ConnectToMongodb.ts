@@ -4,10 +4,8 @@ declare const $: DollarSign;
 
 /**
  * Connect to database on boot
- * @param next
- * @return {Promise<*>}
  */
-export = async (next: () => any): Promise<any> => {
+export = async (): Promise<any> => {
     // Get mongodb config
     let config = $.$config.get('mongodb', {});
 
@@ -30,6 +28,4 @@ export = async (next: () => any): Promise<any> => {
         // Exit
         $.logErrorAndExit("Error connecting to mongodb!")
     }
-
-    return next()
 };
