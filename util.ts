@@ -22,4 +22,4 @@ const XMongoConnection = Client(config.url, config.options);
 const DBCollection = (collection: string): typeof XMongoModel => XMongoConnection.model(collection);
 
 // Export Others
-export {XMongoConnection, XMongoModel, is, parseServerUrl, DBCollection};
+export = {XMongoConnection, XMongoModel, is, parseServerUrl, DBCollection};

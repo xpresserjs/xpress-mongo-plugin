@@ -1,4 +1,9 @@
-import { XMongoModel, is, parseServerUrl } from "xpress-mongo";
-declare const XMongoConnection: import("xpress-mongo/types/src/XMongoClient");
-declare const DBCollection: (collection: string) => typeof XMongoModel;
-export { XMongoConnection, XMongoModel, is, parseServerUrl, DBCollection };
+import { XMongoModel, parseServerUrl } from "xpress-mongo";
+declare const _default: {
+    XMongoConnection: import("xpress-mongo/types/src/XMongoClient");
+    XMongoModel: typeof XMongoModel;
+    is: import("xpress-mongo").XMongoSchemaBuilder;
+    parseServerUrl: typeof parseServerUrl;
+    DBCollection: (collection: string) => typeof XMongoModel;
+};
+export = _default;

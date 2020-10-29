@@ -1,4 +1,6 @@
 import {DollarSign} from "xpresser/types";
+import Util = require('./util');
+export const {DBCollection} = Util
 
 declare const $: DollarSign;
 
@@ -16,4 +18,3 @@ export async function run(config: any): Promise<void> {
     })
 }
 
-export {DBCollection} from "./util"

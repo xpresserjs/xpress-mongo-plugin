@@ -1,6 +1,7 @@
-import {XMongoConnection} from "../util";
+import Util = require("../util");
 import {DollarSign} from "xpresser/types";
 declare const $: DollarSign;
+const {XMongoConnection} = Util;
 
 /**
  * Connect to database on boot
