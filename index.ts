@@ -14,7 +14,7 @@ export async function run(config: any): Promise<void> {
      * Set artisan factory settings
      */
     $.ifIsConsole(() => {
-        $.$config.set('artisan.factory.model', `${config.path}/Factory/model.hbs`);
+        $.config.set('artisan.factory.model', `${config.path}/Factory/model.hbs`);
     })
 }
 

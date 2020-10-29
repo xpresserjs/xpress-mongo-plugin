@@ -4,11 +4,11 @@ import {DollarSign} from "xpresser/types";
 declare const $: DollarSign;
 
 // Get mongodb config
-let config = $.$config.get('mongodb');
+let config = $.config.get('mongodb');
 
 // if config is function call and get value
 if (typeof config === "function") {
-    config = $.$config.call('mongodb');
+    config = $.config.call('mongodb');
 }
 
 // Throw Error if !config

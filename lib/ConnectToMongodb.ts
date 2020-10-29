@@ -8,10 +8,10 @@ const {XMongoConnection} = Util;
  */
 export = async (): Promise<any> => {
     // Get mongodb config
-    let config = $.$config.get('mongodb', {});
+    let config = $.config.get('mongodb', {});
 
     if (typeof config === "function") {
-        config = $.$config.call('mongodb');
+        config = $.config.call('mongodb');
     }
 
 
