@@ -1,6 +1,7 @@
 import Util = require("../util");
-import {DollarSign} from "xpresser/types";
-declare const $: DollarSign;
+import {getInstance} from "xpresser";
+
+const $ = getInstance();
 const {XMongoConnection} = Util;
 
 /**

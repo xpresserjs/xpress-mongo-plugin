@@ -1,8 +1,8 @@
-import {DollarSign} from "xpresser/types";
+import {getInstance} from "xpresser";
 import Util = require('./util');
 export const {DBCollection} = Util
 
-declare const $: DollarSign;
+const $ = getInstance();
 
 export async function run(config: any): Promise<void> {
     // Require Connector

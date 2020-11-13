@@ -1,7 +1,7 @@
 import {Client, XMongoModel, is, parseServerUrl} from "xpress-mongo"
-import {DollarSign} from "xpresser/types";
+import {getInstance} from "xpresser";
 
-declare const $: DollarSign;
+const $ = getInstance();
 
 // Get mongodb config
 let config = $.config.get('mongodb');
@@ -13,7 +13,7 @@ if (typeof config === "function") {
 
 // Throw Error if !config
 if (!config)
-    throw Error('mongodb config not found!');
+    $.logErrorAndExit('{mongodb} config not found!');
 
 // Get Connection Instance
 const XMongoConnection = Client(config.url, config.options);
