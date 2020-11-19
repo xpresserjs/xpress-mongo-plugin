@@ -1,6 +1,5 @@
 import {getInstance} from "xpresser";
-import Util = require('./util');
-export const {DBCollection} = Util
+export {DBCollection, XMongoConnection} from "./util";
 
 const $ = getInstance();
 

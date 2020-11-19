@@ -16,10 +16,8 @@ if (!config)
     $.logErrorAndExit('{mongodb} config not found!');
 
 // Get Connection Instance
-const XMongoConnection = Client(config.url, config.options);
+export const XMongoConnection = Client(config.url, config.options);
 
 // Create ShortHand function for model creation
-const DBCollection = (collection: string): typeof XMongoModel => XMongoConnection.model(collection);
-
-// Export Others
-export = {XMongoConnection, XMongoModel, is, parseServerUrl, DBCollection};
+export const DBCollection = (collection: string): typeof XMongoModel => XMongoConnection.model(collection);
+export {Client, XMongoModel, is, parseServerUrl} from "xpress-mongo"
