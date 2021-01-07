@@ -1,4 +1,4 @@
-import {is, XMongoModel} from 'xpress-mongo';
+import {is} from 'xpress-mongo';
 import {DBCollection} from '@xpresser/xpress-mongo';
 
 // Model Interface (optional)
@@ -11,7 +11,7 @@ export interface {{name}}DataType {
  * @class {{name}}
  * @extends XMongoModel
  */
-class {{name}} extends (<typeof XMongoModel>DBCollection('{{table}}')) {
+class {{name}} extends DBCollection('{{table}}') {
 
     // Set Model Schema
     static schema = {

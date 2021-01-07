@@ -28,17 +28,17 @@ Note: if you don't have `plugins.json` file in your project create one in your *
 **backend/plugins.json**
 
  ```json
- [
-  "npm://@xpresser/xpress-mongo"
-]
+{
+  "npm://@xpresser/xpress-mongo": true
+}
  ```
 
 ### Config
 
-Add to your configuration using key `mongodb`
+Add to your configuration using key `mongodb`, Example:
 
  ```javascript
- xpresser.init({
+const config = {
   mongodb: {
     url: 'mongodb://127.0.0.1:27017',
     database: 'test',
@@ -47,7 +47,7 @@ Add to your configuration using key `mongodb`
       useUnifiedTopology: true
     }
   }
-})
+};
  ```
 
 ### Commands
@@ -56,4 +56,4 @@ Add to your configuration using key `mongodb`
 xjs make:model [ModelName]
 ```
 
-**NOTE:** This plugin modifies the factory template for models
+**NOTE:** This plugin modifies xpresser's default factory template for models.

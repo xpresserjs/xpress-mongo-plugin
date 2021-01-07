@@ -14,8 +14,7 @@ export = async (): Promise<any> => {
     if (typeof config === "function") {
         config = $.config.call('mongodb');
     }
-
-
+    
     try {
         // try connecting...
         const client = await XMongoConnection.connect();
@@ -23,7 +22,7 @@ export = async (): Promise<any> => {
         client.useDb(config.database);
 
         // Log success if not console.
-        $.ifNotConsole(() => $.logSuccess('Connected to MongoDB'))
+        $.ifNotConsole(() => $.logSuccess(`Connected to MongoDB: [${config.database}]`))
     } catch (err) {
         // Console.log Error
         console.log(err);
