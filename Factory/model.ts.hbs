@@ -1,16 +1,17 @@
 import {is} from 'xpress-mongo';
 import {DBCollection} from '@xpresser/xpress-mongo';
 
-// Model Interface (optional)
+/**
+* Interface for Model's `this.data`.
+* Optional if accessing data using model helper functions
+*/
 export interface {{name}}DataType {
-    _id: Object,
     updatedAt?: Date,
     createdAt: Date,
 }
 
 /**
- * @class {{name}}
- * @extends XMongoModel
+ * Model {{name}}
  */
 class {{name}} extends DBCollection('{{table}}') {
 
@@ -20,7 +21,6 @@ class {{name}} extends DBCollection('{{table}}') {
         createdAt: is.Date().required()
     };
 
-    // Set Model data type (optional)
     public data!: {{name}}DataType;
 }
 
