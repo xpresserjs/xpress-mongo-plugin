@@ -1,13 +1,11 @@
 import Util = require("../util");
-import {getInstance} from "xpresser";
-
-const $ = getInstance();
+import {DollarSign} from "xpresser/types";
 const {XMongoConnection} = Util;
 
 /**
  * Connect to database on boot
  */
-export = async (): Promise<any> => {
+export = async ($: DollarSign): Promise<any> => {
     // Get mongodb config
     let config = $.config.get('mongodb', {});
 

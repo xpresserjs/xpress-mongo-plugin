@@ -4,20 +4,12 @@ Xpress mongo is a light nodejs library for mongodb.
 
 ### Installation
 
-Install **xpress-mongo**
+Install **xpress-mongo** && **@xpresser/xpress-mongo** plugin
 
  ```shell script
-npm i xpress-mongo
+npm i xpress-mongo @xpresser/xpress-mongo
 # OR
-yarn add xpress-mongo
-```
-
-Install **@xpresser/xpress-mongo** plugin
-
- ```shell script
-npm i @xpresser/xpress-mongo
-# OR
-yarn add @xpresser/xpress-mongo
+yarn add xpress-mongo @xpresser/xpress-mongo
 ```
 
 ### Setup
@@ -39,6 +31,13 @@ Add to your configuration using key `mongodb`, Example:
 
  ```javascript
 const config = {
+  /**
+   * If Enabled, xjs make:model will generate Models 
+   * that requires you to define all data types.
+   */
+  useStrictTypescriptModels: false, // >=v1.0.0
+  
+  // Connection Config
   mongodb: {
     url: 'mongodb://127.0.0.1:27017',
     database: 'test',

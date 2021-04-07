@@ -1,0 +1,26 @@
+const {is, XMongoModel} = require("xpress-mongo");
+const {DBCollection} = require("@xpresser/xpress-mongo");
+
+/**
+ * {{name}} Model
+ * Collection: `{{table}}`
+ */
+class {{name}} extends XMongoModel {
+
+    // Set Model Schema
+    static schema = {
+        updatedAt: is.Date(),
+        createdAt: is.Date().required()
+    };
+
+}
+
+
+/**
+* Map Model to Collection.
+* .native() will be made available for use.
+*/
+UseCollection({{name}}, "{{table}}")
+
+// Export Model
+module.exports = {{name}};

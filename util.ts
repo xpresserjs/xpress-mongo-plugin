@@ -19,5 +19,12 @@ if (!config)
 export const XMongoConnection = Client(config.url, config.options);
 
 // Create ShortHand function for model creation
-export const DBCollection = (collection: string): typeof XMongoModel => XMongoConnection.model(collection);
+export function DBCollection(collection: string) {
+    return XMongoConnection.model(collection)
+}
+
+export function UseCollection(model: typeof XMongoModel, collection: string) {
+    return XMongoConnection.model(collection, model)
+}
+
 export {Client, XMongoModel, is, parseServerUrl} from "xpress-mongo"

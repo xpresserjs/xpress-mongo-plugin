@@ -1,20 +1,28 @@
-import {getInstance} from "xpresser";
-export {DBCollection, XMongoConnection} from "./util";
+import {DollarSign} from "xpresser/types";
 
-const $ = getInstance();
+export {DBCollection, XMongoConnection, UseCollection} from "./util";
 
-export async function run(config: any): Promise<void> {
+
+export async function run(config: any, $: DollarSign): Promise<void> {
 
     // Require Connector
-    const ConnectToMongodb = require('./lib/ConnectToMongodb');
+    const ConnectToMongodb = require('./lib/ConnectToMongodb') as typeof import("./lib/ConnectToMongodb");
+
     // Connect
-    await ConnectToMongodb();
+    await ConnectToMongodb($);
 
     /**
      * Set artisan factory settings
      */
     $.ifIsConsole(() => {
-        $.config.set('artisan.factory.model', `${config.path}/Factory/model.hbs`);
+        const useStrictTypescriptModels = $.config.get('useStrictTypescriptModels', false);
+
+        $.config.set(
+            'artisan.factory.model',
+            useStrictTypescriptModels
+                ? `${config.path}/Factory/model.strict.hbs`
+                : `${config.path}/Factory/model.hbs`
+        );
     })
 }
 

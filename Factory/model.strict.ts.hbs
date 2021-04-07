@@ -1,0 +1,45 @@
+import { is, XMongoModel, XMongoDataType } from "xpress-mongo";
+import { UseCollection } from "@xpresser/xpress-mongo";
+
+/**
+ * Model Schema Type in sync with the interface defined below.
+ */
+type {{name}}Schema = Record<keyof {{name}}DataType, XMongoDataType>;
+
+/**
+ * Interface for Model's `this.data`. (For Typescript)
+ * Optional if accessing data using model helper functions
+ *
+ * @example
+ * this.data.updatedAt? // type Date
+ * this.data.createdAt // type Date
+ */
+export interface {{name}}DataType {
+    updatedAt?: Date;
+    createdAt: Date;
+}
+
+/**
+ * Model {{name}}
+ */
+class {{name}} extends XMongoModel {
+    /**
+     * Model Schema
+     */
+    static schema: {{name}}Schema = {
+        updatedAt: is.Date(),
+        createdAt: is.Date().required()
+    };
+
+    // SET Type of this.data.
+    public data!: {{name}}DataType;
+}
+
+/**
+ * Map Model to Collection.
+ * .native() will be made available for use.
+ */
+UseCollection({{name}}, "{{table}}");
+
+// Export Model as Default
+export default {{name}};
