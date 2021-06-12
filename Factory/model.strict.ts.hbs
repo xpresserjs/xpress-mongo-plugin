@@ -1,10 +1,5 @@
-import { is, XMongoModel, XMongoDataType } from "xpress-mongo";
+import { is, XMongoModel, XMongoSchema } from "xpress-mongo";
 import { UseCollection } from "@xpresser/xpress-mongo";
-
-/**
- * Model Schema Type in sync with the interface defined below.
- */
-type {{name}}Schema = Record<keyof {{name}}DataType, XMongoDataType>;
 
 /**
  * Interface for Model's `this.data`. (For Typescript)
@@ -26,7 +21,7 @@ class {{name}} extends XMongoModel {
     /**
      * Model Schema
      */
-    static schema: {{name}}Schema = {
+    static schema: XMongoSchema<{{name}}DataType> = {
         updatedAt: is.Date(),
         createdAt: is.Date().required()
     };

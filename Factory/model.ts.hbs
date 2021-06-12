@@ -1,4 +1,4 @@
-import {is} from 'xpress-mongo';
+import {is, XMongoSchema} from 'xpress-mongo';
 import {DBCollection} from '@xpresser/xpress-mongo';
 
 /**
@@ -16,7 +16,7 @@ export interface {{name}}DataType {
 class {{name}} extends DBCollection('{{table}}') {
 
     // Set Model Schema
-    static schema = {
+    static schema: XMongoSchema = {
         updatedAt: is.Date(),
         createdAt: is.Date().required()
     };
