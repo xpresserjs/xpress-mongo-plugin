@@ -1,5 +1,4 @@
 import {DollarSign} from "xpresser/types";
-
 export {DBCollection, XMongoConnection, UseCollection} from "./util";
 
 

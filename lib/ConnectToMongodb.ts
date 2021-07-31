@@ -20,7 +20,9 @@ export = async ($: DollarSign): Promise<any> => {
         client.useDb(config.database);
 
         // Log success if not console.
-        $.ifNotConsole(() => $.logSuccess(`Connected to MongoDB: [${config.database}]`))
+        if(!$.options.isConsole || $.engineData.has("isEventServer")) {
+            $.logSuccess(`Connected to MongoDB: [${config.database}]`)
+        }
     } catch (err) {
         // Console.log Error
         console.log(err);
