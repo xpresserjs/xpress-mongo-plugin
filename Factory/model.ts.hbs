@@ -1,19 +1,20 @@
-import {is, XMongoSchema} from 'xpress-mongo';
-import {DBCollection} from '@xpresser/xpress-mongo';
+import {is, XMongoSchema, XMongoModel} from 'xpress-mongo';
+import {UseCollection} from '@xpresser/xpress-mongo';
 
 /**
-* Interface for Model's `this.data`.
-* Optional if accessing data using model helper functions
-*/
+ * Interface for Model's `this.data`.
+ * Optional if accessing data using model helper functions
+ */
 export interface {{name}}DataType {
     updatedAt?: Date,
     createdAt: Date,
 }
 
 /**
- * Model {{name}}
+ * {{name}} Model
+ * Collection: `{{table}}`
  */
-class {{name}} extends DBCollection('{{table}}') {
+class {{name}} extends XMongoModel {
 
     // Set Model Schema
     static schema: XMongoSchema = {
@@ -23,5 +24,11 @@ class {{name}} extends DBCollection('{{table}}') {
 
     public data!: {{name}}DataType;
 }
+
+/**
+* Map Model to Collection: `{{table}}`
+* .native() will be made available for use.
+*/
+UseCollection({{name}}, "{{table}}");
 
 export default {{name}};

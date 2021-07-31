@@ -14,9 +14,7 @@ export interface {{name}}DataType {
     createdAt: Date;
 }
 
-/**
- * Model {{name}}
- */
+
 class {{name}} extends XMongoModel {
     /**
      * Model Schema
@@ -31,7 +29,7 @@ class {{name}} extends XMongoModel {
 }
 
 /**
- * Map Model to Collection.
+ * Map Model to Collection: `{{table}}`
  * .native() will be made available for use.
  */
 UseCollection({{name}}, "{{table}}");

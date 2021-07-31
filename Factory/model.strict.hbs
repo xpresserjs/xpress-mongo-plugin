@@ -1,10 +1,7 @@
 const {is, XMongoModel} = require("xpress-mongo");
 const {DBCollection} = require("@xpresser/xpress-mongo");
 
-/**
- * {{name}} Model
- * Collection: `{{table}}`
- */
+
 class {{name}} extends XMongoModel {
 
     // Set Model Schema
@@ -17,7 +14,7 @@ class {{name}} extends XMongoModel {
 
 
 /**
-* Map Model to Collection.
+* Map Model to Collection: `{{table}}`
 * .native() will be made available for use.
 */
 UseCollection({{name}}, "{{table}}")
