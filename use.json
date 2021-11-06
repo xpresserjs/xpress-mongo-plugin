@@ -1,5 +1,5 @@
 {
-  "xpresser": ">=0.18.0",
+  "xpresser": ">=0.24.0",
   "namespace": "xpress-mongo",
   "use_index": "dist/index.js"
 }

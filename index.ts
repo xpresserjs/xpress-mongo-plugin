@@ -1,6 +1,10 @@
-import { DollarSign } from "xpresser/types";
+import { DollarSign, PluginData } from "xpresser/types";
 
-export async function run(config: any, $: DollarSign): Promise<void> {
+export function dependsOn(plugin: PluginData) {
+    return ["xpress-mongo"];
+}
+
+export async function run(plugin: PluginData, $: DollarSign): Promise<void> {
     /**
      * Skip connecting to db when running native xpresser commands
      */
@@ -28,8 +32,8 @@ export async function run(config: any, $: DollarSign): Promise<void> {
         $.config.set(
             "artisan.factory.model",
             useStrictTypescriptModels
-                ? `${config.path}/Factory/model.strict.hbs`
-                : `${config.path}/Factory/model.hbs`
+                ? `${plugin.path}/Factory/model.strict.hbs`
+                : `${plugin.path}/Factory/model.hbs`
         );
     });
 }
