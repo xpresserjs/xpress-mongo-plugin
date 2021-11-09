@@ -8,7 +8,7 @@ let config = $.config.get("mongodb");
 
 // if config is function call and get value
 if (typeof config === "function") {
-    config = $.config.call("mongodb");
+    config = config("mongodb");
 }
 
 // Throw Error if !config

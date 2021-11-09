@@ -8,13 +8,7 @@ export async function run(plugin: PluginData, $: DollarSign): Promise<void> {
     /**
      * Skip connecting to db when running native xpresser commands
      */
-    const connectToDb = !(
-        $.engineData.get("LaunchType") === "cli" &&
-        process.argv[3] &&
-        process.argv[3].substr(0, 5) === "make:"
-    );
-
-    if (connectToDb) {
+    if (!$.isNativeCliCommand()) {
         // Require Connector
         const ConnectToMongodb =
             require("./lib/ConnectToMongodb") as typeof import("./lib/ConnectToMongodb");
@@ -24,7 +18,7 @@ export async function run(plugin: PluginData, $: DollarSign): Promise<void> {
     }
 
     /**
-     * Set artisan factory settings
+     * Set xjs factory settings
      */
     $.ifIsConsole(() => {
         const useStrictTypescriptModels = $.config.get("useStrictTypescriptModels", false);
