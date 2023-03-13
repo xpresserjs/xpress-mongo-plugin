@@ -7,7 +7,7 @@ const {XMongoConnection} = Util;
  */
 export = async ($: DollarSign): Promise<any> => {
     // Get mongodb config
-    let config = $.config.get('mongodb', {});
+    let config = $.config.get<Record<string, any>>('mongodb', {});
 
     if (typeof config === "function") {
         config = $.config.call('mongodb');
