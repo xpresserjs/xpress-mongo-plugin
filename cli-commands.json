@@ -1,6 +1,6 @@
 [
   {
-    "command": "migrate [action] [verbose]",
+    "command": "migrate [action]",
     "description": "Migrate the database to the latest version.",
     "file": "migrate.js"
   },
