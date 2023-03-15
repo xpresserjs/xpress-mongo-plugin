@@ -8,8 +8,6 @@ export = async (args: string[], {helper}: { helper: IJobHelper }) => {
     const $ = helper.$;
     let fileName = args[0];
 
-    console.log("args", args)
-
     if (!fileName) {
         return $.logErrorAndExit("Please provide a file name");
     }
@@ -39,6 +37,8 @@ export = async (args: string[], {helper}: { helper: IJobHelper }) => {
 
     // copy stub to migration folder
     $.file.fs().copyFileSync(MigrationStub, MigrationFolder + "/" + fileName + fileExtension);
+
+    $.logSuccess(`Migration file created at ${MigrationFolder}/${fileName}`);
 
     return $.exit();
 };

@@ -22,7 +22,6 @@ export = async (args: string[], {helper}: { helper: IJobHelper }) => {
         await doMigration($);
     }
 
-
     return $.exit();
 };
 

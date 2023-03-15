@@ -102,6 +102,11 @@ class DbMigration {
         }
 
         await this.#functions[this.action]!();
+
+        // end process if undo
+        if (this.action === "undo") {
+            this.job.end(true);
+        }
     }
 }
 
