@@ -1,7 +1,6 @@
 // @ts-ignore
 import JobHelper = require("xpresser/dist/src/Console/JobHelper");
 import type IJobHelper from "xpresser/src/Console/JobHelper";
-import {execSync} from "node:child_process";
 import {DollarSign} from "xpresser/types";
 import Migration, {MigrationDataType} from "../models/Migration";
 import MigratorFunctions from "../lib/MigratorFunctions";
@@ -11,13 +10,13 @@ export = async (args: string[], {helper}: { helper: IJobHelper }) => {
     const $ = helper.$;
 
     const isUndo = args[0] === "undo";
-    const isVerbose = args.includes("verbose");
+    // const isVerbose = args.includes("verbose");
 
     // get xpresser instance
     $.logInfo(`${isUndo ? "UNDO" : "DO"} -- Migration`);
 
     if (isUndo) {
-        await undoMigration($, isVerbose);
+        await undoMigration($);
     } else {
         await doMigration($);
     }
@@ -87,7 +86,9 @@ async function doMigration($: DollarSign) {
     }
 }
 
-async function undoMigration($: DollarSign, isVerbose: boolean) {
+async function undoMigration($: DollarSign) {
+    const MigrationFolder = MigratorFunctions.migrationFolder($)
+
     // get last batch
     const lastBatch = await Migration.lastBatch();
 
@@ -100,27 +101,39 @@ async function undoMigration($: DollarSign, isVerbose: boolean) {
     let index = 0;
     let completed = 0;
     for (const f of lastBatch.data.files) {
-        // call xpresser run job command using execSync
-        const program = `npx xjs run migrations/${f.path} undo`;
+        let job: { handler?: Function } | undefined;
 
         try {
-            // run command
-            execSync(program, {
-                stdio: isVerbose ? "inherit" : "ignore",
-                cwd: process.cwd()
-            });
+            job = require(MigrationFolder + "/" + f.path);
+
+            // check if job has handler
+            if (!job || (job && !job.handler)) {
+                $.logError(`Migration file [${f.path}] has no handler.`);
+                continue;
+            }
+        } catch (e) {
+            $.logError(`Error while importing [${f.path}]`);
+            $.logError(e);
+            continue;
+        }
+
+        $.logInfo(`Start: [${f.path}]`);
+
+        try {
+            await job!.handler!(["undo"], new JobHelper(f.path));
 
             // remove file from batch
             await Migration.removeFileFromBatch(lastBatch.id(), index);
             completed++;
-
-            $.logSuccess(`Undo: [${f.path}]`);
         } catch (e) {
-            $.log(`Encountered error while undoing [${f.path}]`);
+            $.logError(`Error while running [${f.path}]`);
             $.logError(e);
+            continue;
         }
 
         index++;
+
+        $.logSuccess(`Completed: [${f.path}]`);
     }
 
     if (completed === lastBatch.data.files.length) {
