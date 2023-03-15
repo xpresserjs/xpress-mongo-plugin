@@ -1,0 +1,17 @@
+import { defineMigrationJob } from "@xpresser/xpress-mongo";
+
+export = defineMigrationJob((m) => {
+    /**
+     * Do Migration
+     */
+    m.do(async () => {
+        // do migration code
+    });
+
+    /**
+     * Undo Migration
+     */
+    m.undo(async () => {
+        // undo migration code
+    });
+});

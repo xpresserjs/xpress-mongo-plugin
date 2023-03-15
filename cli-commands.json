@@ -1,0 +1,13 @@
+[
+  {
+    "command": "migrate [action] [verbose]",
+    "description": "Migrate the database to the latest version.",
+    "file": "migrate.js"
+  },
+
+  {
+    "command": "make:migration <filename>",
+    "description": "Create a new migration file.",
+    "file": "make.js"
+  }
+]

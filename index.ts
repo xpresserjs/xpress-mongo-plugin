@@ -33,3 +33,4 @@ export async function run(plugin: PluginData, $: DollarSign): Promise<void> {
 }
 
 export { DBCollection, XMongoConnection, UseCollection } from "./util";
+export { defineMigrationJob } from  "./migrator"
